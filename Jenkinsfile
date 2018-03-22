@@ -6,7 +6,7 @@ pipeline {
             agent {
                 docker {
                     image 'aerokube/cm:latest-release' 
-                    args 'run --rm -v /var/run/docker.sock:/var/run/docker.sock -v ${HOME}:/root -e OVERRIDE_HOME=${HOME} selenoid start --vnc --tmpfs 128'
+                    args '--rm -v /var/run/docker.sock:/var/run/docker.sock -v ${HOME}:/root -e OVERRIDE_HOME=${HOME} selenoid start --vnc --tmpfs 128'
                     reuseNode true
                 }
             }

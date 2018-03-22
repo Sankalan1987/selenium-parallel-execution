@@ -10,7 +10,7 @@ pipeline {
             agent {
                 docker {
                     image 'aerokube/cm:1.0.0'
-                    args '--rm -v /var/run/docker.sock:/var/run/docker.sock selenoid --last-versions 2 --tmpfs 128 --pull > /etc/selenoid/browsers.json'
+                    args '--rm -v /var/run/docker.sock:/var/run/docker.sock --name selenoid --last-versions 2 --tmpfs 128 --pull > /etc/selenoid/browsers.json'
                     reuseNode true
                 }
             }

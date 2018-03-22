@@ -1,28 +1,12 @@
 pipeline {
     agent any
     stages {
-       stage('Create Directory') {
-            steps {
-               sh 'mkdir -p /etc/selenoid'
-            }
-        }
-        stage('Generate Selenoid Configuration File') {
-            agent {
-                docker {
-                    image 'aerokube/cm:1.0.0'
-                    args '--rm -v /var/run/docker.sock:/var/run/docker.sock --name selenoid --last-versions 2 --tmpfs 128 --pull > /etc/selenoid/browsers.json'
-                    reuseNode true
-                }
-            }
-            steps {
-              echo 'Config Done'
-            }
-        }
+       
         stage('Start Selenoid') {
             agent {
                 docker {
-                    image 'aerokube/selenoid:1.1.1' 
-                    args '-d --name selenoid -p 4444:4444 -v /var/run/docker.sock:/var/run/docker.sock -v /etc/selenoid:/etc/selenoid:ro'
+                    image 'aerokube/cm:latest-release' 
+                    args 'run --rm -v /var/run/docker.sock:/var/run/docker.sock -v ${HOME}:/root -e OVERRIDE_HOME=${HOME} selenoid start --vnc --tmpfs 128'
                     reuseNode true
                 }
             }

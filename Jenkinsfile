@@ -6,12 +6,11 @@ pipeline {
             agent {
                 docker {
                     image 'aerokube/cm:latest-release' 
-                    args '--rm -v /var/run/docker.sock:/var/run/docker.sock -v ${HOME}:/root -e OVERRIDE_HOME=${HOME}'
+                    args '--rm -v /var/run/docker.sock:/var/run/docker.sock -v ${HOME}:/root -e OVERRIDE_HOME=${HOME} --name=selenoid start --vnc --tmpfs 128'
                     reuseNode true
                 }
             }
             steps {
-                sh 'selenoid start --vnc --tmpfs 128'
               echo 'Selenoid Started'
             }
         }

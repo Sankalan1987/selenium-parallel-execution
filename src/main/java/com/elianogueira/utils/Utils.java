@@ -22,7 +22,7 @@ public class Utils {
     public static WebDriver getDriver(String browser) throws Exception {
 
         // a composition of the target grid address and port
-        String GRID_URL = "http://" + getValueFromConf("") + ":" + getValueFromConf("") + "/wd/hub";
+        String GRID_URL = "http://localhost:4444/wd/hub";
 
         return new RemoteWebDriver(new URL(GRID_URL), returnCapability(browser));
     }

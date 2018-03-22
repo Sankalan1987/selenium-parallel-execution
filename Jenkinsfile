@@ -1,8 +1,8 @@
 pipeline {
     agent { 
             docker { 
-                    image 'elgalu/selenium' 
-                    args '--privileged -d --name=grid -p 4444:24444 -p 5900:25900 -e TZ="America/Sao_Paulo" -e VNC_PASSWORD=passwd -v /dev/shm:/dev/shm'
+                    image 'aerokube/selenoid:latest-release' 
+                    args '-d --name selenoid -p 4444:4444 -v /var/run/docker.sock:/var/run/docker.sock -v `pwd`/config/:/etc/selenoid/:ro'
                 } 
             }
     stages {

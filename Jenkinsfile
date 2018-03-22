@@ -2,7 +2,7 @@ pipeline {
     agent { 
             docker { 
                     image 'aerokube/selenoid:latest-release' 
-                    args '-d --name selenoid -p 4444:4444 -v /var/run/docker.sock:/var/run/docker.sock -v `pwd`/config/:/etc/selenoid/:ro'
+                    args '-d --name selenoid -p 4444:4444 -v /var/run/docker.sock:/var/run/docker.sock -v /etc/selenoid:/etc/selenoid:ro'
                 } 
             }
     stages {

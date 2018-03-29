@@ -29,7 +29,7 @@ public class SearchTest {
 
         PeoplePage peoplePage = new PeoplePage(driver);
         assertThat(peoplePage.getTitleName(), equalTo("Elias Nogueira"));
-        assertThat(peoplePage.getDescription(), equalTo("Sênior QA Engineer, Agile Coach and Trainer"));
+        assertThat(peoplePage.getDescription(), equalTo("Senior QA Engineer, Agile Coach and Trainer"));
         assertThat(peoplePage.getURLAddress(), containsString("@eliasnogueira"));
 
         driver.quit();
